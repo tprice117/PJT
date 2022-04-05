@@ -20,6 +20,7 @@ CREATE NETWORK:
         	'HOST': 'db',
         	'PORT': 5432,
     }
+    }
 4. docker-compose up -d
 
 5. Change "ALLOWED_HOSTS = []" to "ALLOWED_HOSTS = ['*']"
