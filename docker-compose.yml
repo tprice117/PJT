@@ -2,10 +2,11 @@ version: "3.9"
 
 services:
   db:
-    network_mode: bridge
+    network_mode: satbnet
     image: postgres
     volumes:
-      - ./data/db:/var/lib/postgresql/data
+      - postgres_db:/var/lib/postgresql/data
+      - postgres_config:/var/lib/postgresql/config
     ports:
       - "5432:5432"
     environment:
@@ -14,7 +15,7 @@ services:
       - POSTGRES_PASSWORD=postgres
 
   web:
-    network_mode: bridge
+    network_mode: satbnet
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
@@ -27,3 +28,8 @@ services:
       - POSTGRES_PASSWORD=postgres
     depends_on:
       - db
+  volumes:
+    postgres_db:
+      external: true
+    postgres_config:
+      external: true
