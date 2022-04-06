@@ -4,6 +4,7 @@ CREATE VOLUMES:
 	docker volume create postgres_config
 CREATE NETWORK:
 	docker network create satbnet
+	
 1. docker-compose run web django-admin startproject djangoproject .
 
 
